@@ -308,6 +308,12 @@ public interface Images extends Resources {
   ImageResource twitterComponent();
 
   /**
+   * Designer palette item: Logger Component
+   */
+  @Source("com/google/appinventor/images/logger.png")
+  ImageResource loggerComponent();
+
+  /**
    * Designer palette item: TinyDB Component
    */
   @Source("com/google/appinventor/images/tinyDB.png")
