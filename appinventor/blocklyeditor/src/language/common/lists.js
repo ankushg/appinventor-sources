@@ -189,12 +189,53 @@ Blockly.Language.lists_pick_random_item = {
   init : function() {
     this.setColour(Blockly.LIST_CATEGORY_HUE);
     this.setOutput(true, null);
-    this.appendValueInput('LIST').setCheck(Blockly.Language.YailTypeToBlocklyType("list",Blockly.Language.INPUT)).appendTitle('pick a random item').appendTitle('list');
-    Blockly.Language.setTooltip(this, Blockly.LANG_LISTS_PICK_RANDOM_TOOLTIP);
-    this.appendCollapsedInput().appendTitle('pick random', 'COLLAPSED_TEXT');
+    this.appendValueInput('LIST')
+      .setCheck(Blockly.Language.YailTypeToBlocklyType("list",Blockly.Language.INPUT))
+      .appendTitle('pick')
+      .appendTitle(new Blockly.FieldDropdown(this.OPERATORS), 'OP')
+      .appendTitle('list');
+    var thisBlock = this;
+    this.setTooltip(function() {
+      var mode = thisBlock.getTitleValue('OP');
+      return Blockly.Language.lists_pick_random_item.TOOLTIPS[mode];
+    });
+    this.appendCollapsedInput().appendTitle(this.getTitleValue('OP'), 'COLLAPSED_TEXT');
   },
   onchange: Blockly.WarningHandler.checkErrors,
-  typeblock: [{ translatedName: Blockly.LANG_LISTS_PICK_RANDOM_TITLE_PICK_RANDOM }]
+  typeblock: [{
+    translatedName: Blockly.LANG_LISTS_PICK_RANDOM_TITLE_PICK_RANDOM,
+    dropDown: {
+      titleName: 'OP',
+      value: 'RANDOM'
+    }
+  },{
+    translatedName: Blockly.LANG_LISTS_PICK_RANDOM_TITLE_PICK_FIRST,
+    dropDown: {
+      titleName: 'OP',
+      value: 'FIRST'
+    }
+  },{
+    translatedName: Blockly.LANG_LISTS_PICK_RANDOM_TITLE_PICK_LAST,
+    dropDown: {
+      titleName: 'OP',
+      value: 'LAST'
+    }
+  }],
+  prepareCollapsedText: function(){
+    var titleFromOperator = Blockly.FieldDropdown.lookupOperator(this.OPERATORS, this.getTitleValue('OP'));
+    this.getTitle_('COLLAPSED_TEXT').setText(titleFromOperator, 'COLLAPSED_TEXT');
+  }
+};
+
+Blockly.Language.lists_pick_random_item.OPERATORS =
+  [['random', 'RANDOM'],
+   ['first', 'FIRST'],
+   ['last', 'LAST']];
+
+Blockly.Language.lists_pick_random_item.TOOLTIPS = {
+  RANDOM : 'random',
+  FIRST : 'first',
+  LAST : 'last'
 };
 
 Blockly.Language.lists_position_in = {
