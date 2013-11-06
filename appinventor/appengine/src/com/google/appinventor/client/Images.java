@@ -186,6 +186,12 @@ public interface Images extends Resources {
    */
   @Source("com/google/appinventor/images/textbox.png")
   ImageResource textbox();
+  
+  /**
+   * Designer palette item: DatePicker
+   */
+   @Source("com/google/appinventor/images/datePicker.png")
+   ImageResource datePickerComponent();
 
   /**
    * Designer palette item: PasswordTextBox component.
