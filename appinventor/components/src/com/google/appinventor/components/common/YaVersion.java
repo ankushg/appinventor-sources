@@ -392,6 +392,10 @@ public class YaVersion {
   // - The Value property was renamed to Checked.
   public static final int CHECKBOX_COMPONENT_VERSION = 2;
 
+  
+  // For DATEPICKER_COMPONENT_VERSION 1:
+  public static final int DATEPICKER_COMPONENT_VERSION = 1;
+  
   public static final int CLOCK_COMPONENT_VERSION = 1;
 
   // For CONTACTPICKER_COMPONENT_VERSION 2:

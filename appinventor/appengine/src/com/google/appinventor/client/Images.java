@@ -386,6 +386,12 @@ public interface Images extends Resources {
   // www.pdclipart.org/displayimage.php/?pid=1047
   @Source("com/google/appinventor/images/webviewerbig.png")
   ImageResource webviewerbig();
+  
+  /**
+   * Designer item: WebViewer component in designer
+   */
+  @Source("com/google/appinventor/images/datepickerbig.png")
+  ImageResource datepickerbig();
 
   /**
    * Designer palette item: Web component
