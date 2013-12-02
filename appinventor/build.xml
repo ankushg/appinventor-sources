@@ -88,6 +88,7 @@
         <pathelement location="lib/bouncycastle/bcprov-jdk15on-149.jar"/>
         <pathelement location="lib/bouncycastle/bcpkix-jdk15on-149.jar"/>
         <pathelement location="lib/android/tools/sdklib.jar"/>
+        <pathelement location="lib/android-support/android-support-v13.jar"/>
         <pathelement location="lib/args4j/args4j-2.0.18.jar" />
         <pathelement location="lib/commons-fileupload/commons-fileupload-1.2.2.jar" />
         <pathelement location="lib/commons-io/commons-io-2.0.1.jar"/>
