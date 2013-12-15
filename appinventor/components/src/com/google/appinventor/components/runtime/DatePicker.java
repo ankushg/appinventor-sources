@@ -9,7 +9,6 @@ import android.support.v4.app.DialogFragment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
-import android.widget.DatePicker.OnDateChangedListener;
 import android.widget.EditText;
 
 import com.google.appinventor.components.annotations.DesignerComponent;
@@ -32,8 +31,7 @@ import com.google.appinventor.components.common.YaVersion;
         + "affecting its appearance that can be set in the Designer or Blocks Editor.", category = ComponentCategory.USERINTERFACE)
 @SimpleObject
 @UsesLibraries(libraries = "android-support-v13.jar")
-public final class DatePicker extends AndroidViewComponent implements OnDateChangedListener, OnFocusChangeListener {
-    private final Form form;
+public final class DatePicker extends AndroidViewComponent implements OnFocusChangeListener {
     private boolean isEmbedded;
 
     private EditText mEdit;
@@ -44,7 +42,6 @@ public final class DatePicker extends AndroidViewComponent implements OnDateChan
 
     protected DatePicker(ComponentContainer container) {
         super(container);
-        form = container.$form();
 
         year = c.get(Calendar.YEAR);
         month = c.get(Calendar.MONTH);
@@ -54,7 +51,7 @@ public final class DatePicker extends AndroidViewComponent implements OnDateChan
         mEdit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectDate(view);
+                selectDate();
             }
         });
 
@@ -162,7 +159,6 @@ public final class DatePicker extends AndroidViewComponent implements OnDateChan
     @SimpleProperty
     public void IsEmbedded(boolean isEmbedded) {
         this.isEmbedded = isEmbedded;
-        form.recreate();
     }
 
     @SimpleProperty
@@ -214,17 +210,12 @@ public final class DatePicker extends AndroidViewComponent implements OnDateChan
         return this.month;
     }
 
-    // onDateChanged implementation
-    @Override
-    public void onDateChanged(android.widget.DatePicker view, int year, int month, int day) {
-        Changed();
-    }
-
     // OnFocusChangeListener implementation
     @Override
     public void onFocusChange(View previouslyFocused, boolean gainFocus) {
         if (gainFocus) {
             GotFocus();
+            selectDate();
         } else {
             LostFocus();
         }
@@ -234,15 +225,14 @@ public final class DatePicker extends AndroidViewComponent implements OnDateChan
         mEdit.setText(month + "/" + day + "/" + year);
     }
 
-    public void selectDate(View view) {
+    public void selectDate() {
         DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(form.getSupportFragmentManager(), "DatePicker");
+        newFragment.show(container.$form().getSupportFragmentManager(), "DatePicker");
     }
 
     private class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Create an instance of DatePickerDialog and return it
             return new DatePickerDialog(getActivity(), this, year, month, day);
         }
 
@@ -253,6 +243,7 @@ public final class DatePicker extends AndroidViewComponent implements OnDateChan
             DatePicker.this.day = day;
 
             populateSetDate(year, month + 1, day);
+            Changed();
         }
     }
 
