@@ -76,7 +76,7 @@ import com.google.appinventor.components.annotations.UsesLibraries;
     description = "Top-level component containing all other components in the program",
     showOnPalette = false)
 @SimpleObject
-@UsesLibraries(libraries = "android-support-v4.jar")
+@UsesLibraries(libraries = "android-support-v13.jar")
 @UsesPermissions(permissionNames = "android.permission.INTERNET,android.permission.ACCESS_WIFI_STATE,android.permission.ACCESS_NETWORK_STATE")
 public class Form extends FragmentActivity
     implements Component, ComponentContainer, HandlesEventDispatching {
