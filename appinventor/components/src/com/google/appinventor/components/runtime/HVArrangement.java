@@ -6,12 +6,14 @@
 package com.google.appinventor.components.runtime;
 
 import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
 import com.google.appinventor.components.annotations.DesignerProperty;
 import com.google.appinventor.components.annotations.PropertyCategory;
 import com.google.appinventor.components.annotations.SimpleObject;
 import com.google.appinventor.components.annotations.SimpleProperty;
+import com.google.appinventor.components.annotations.UsesLibraries;
 import com.google.appinventor.components.common.ComponentConstants;
 import com.google.appinventor.components.common.PropertyTypeConstants;
 import com.google.appinventor.components.runtime.util.AlignmentUtil;
@@ -26,8 +28,9 @@ import com.google.appinventor.components.runtime.util.ViewUtil;
  */
 
 @SimpleObject
+@UsesLibraries(libraries = "android-support-v13.jar")
 public class HVArrangement extends AndroidViewComponent implements Component, ComponentContainer {
-  private final Activity context;
+  private final FragmentActivity context;
 
   // Layout
   private final int orientation;
@@ -69,7 +72,7 @@ public class HVArrangement extends AndroidViewComponent implements Component, Co
   // ComponentContainer implementation
 
   @Override
-  public Activity $context() {
+  public FragmentActivity $context() {
     return context;
   }
 

@@ -9,12 +9,14 @@ import com.google.appinventor.components.annotations.DesignerComponent;
 import com.google.appinventor.components.annotations.DesignerProperty;
 import com.google.appinventor.components.annotations.SimpleObject;
 import com.google.appinventor.components.annotations.SimpleProperty;
+import com.google.appinventor.components.annotations.UsesLibraries;
 import com.google.appinventor.components.common.ComponentCategory;
 import com.google.appinventor.components.common.PropertyTypeConstants;
 import com.google.appinventor.components.common.YaVersion;
 import com.google.appinventor.components.runtime.util.ViewUtil;
 
 import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
 /**
@@ -27,9 +29,10 @@ import android.view.View;
     "that should be displayed in tabular form.</p>",
     category = ComponentCategory.LAYOUT)
 @SimpleObject
+@UsesLibraries(libraries = "android-support-v13.jar")
 public class TableArrangement extends AndroidViewComponent
     implements Component, ComponentContainer {
-  private final Activity context;
+  private final FragmentActivity context;
 
   // Layout
   private final TableLayout viewLayout;
@@ -95,7 +98,7 @@ public class TableArrangement extends AndroidViewComponent
   // ComponentContainer implementation
 
   @Override
-  public Activity $context() {
+  public FragmentActivity $context() {
     return context;
   }
 

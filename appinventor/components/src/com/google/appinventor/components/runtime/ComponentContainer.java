@@ -5,13 +5,17 @@
 
 package com.google.appinventor.components.runtime;
 
+import com.google.appinventor.components.annotations.UsesLibraries;
+
 import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 
 /**
  * Components that can contain other components need to implement this
  * interface.
  *
  */
+@UsesLibraries(libraries = "android-support-v13.jar")
 public interface ComponentContainer {
   /**
    * Returns the activity context (which can be retrieved from the root
@@ -19,7 +23,7 @@ public interface ComponentContainer {
    *
    * @return  activity context
    */
-  Activity $context();
+  FragmentActivity $context();
 
   /**
    * Returns the form that ultimately contains this container.

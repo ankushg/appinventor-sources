@@ -12,6 +12,7 @@ import com.google.appinventor.components.annotations.SimpleEvent;
 import com.google.appinventor.components.annotations.SimpleFunction;
 import com.google.appinventor.components.annotations.SimpleObject;
 import com.google.appinventor.components.annotations.SimpleProperty;
+import com.google.appinventor.components.annotations.UsesLibraries;
 import com.google.appinventor.components.annotations.UsesPermissions;
 import com.google.appinventor.components.common.ComponentCategory;
 import com.google.appinventor.components.common.ComponentConstants;
@@ -32,6 +33,7 @@ import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -89,10 +91,11 @@ import java.util.List;
 @SimpleObject
 @UsesPermissions(permissionNames = "android.permission.INTERNET," +
                  "android.permission.WRITE_EXTERNAL_STORAGE")
+@UsesLibraries(libraries = "android-support-v13.jar")
 public final class Canvas extends AndroidViewComponent implements ComponentContainer {
   private static final String LOG_TAG = "Canvas";
 
-  private final Activity context;
+  private final FragmentActivity context;
   private final CanvasView view;
 
   // Android can't correctly give the width and height of a canvas until
@@ -725,7 +728,7 @@ public final class Canvas extends AndroidViewComponent implements ComponentConta
   }
 
   @Override
-  public Activity $context() {
+  public FragmentActivity $context() {
     return context;
   }
 

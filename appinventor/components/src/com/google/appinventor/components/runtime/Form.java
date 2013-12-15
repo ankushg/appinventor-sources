@@ -1106,7 +1106,7 @@ public class Form extends FragmentActivity
   // ComponentContainer implementation
 
   @Override
-  public Activity $context() {
+  public FragmentActivity $context() {
     return this;
   }
 
